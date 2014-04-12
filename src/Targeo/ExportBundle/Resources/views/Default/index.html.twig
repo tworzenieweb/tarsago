@@ -1,0 +1,9 @@
+{% extends "::base.phtml.twig" %}
+
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    {{ form_row(form.file) }}
+
+    <button type="submit">Exportuj</button>
+{{ form_end(form) }}

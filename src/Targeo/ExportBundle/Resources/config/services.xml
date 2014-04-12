@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    
+    <parameters>
+        <parameter key="targeo_export.exporter.class">Targeo\ExportBundle\Manager\ExportManager</parameter>
+        <parameter key="targeo_export.grid.class">Targeo\ExportBundle\Renderer\Grid</parameter>
+        <parameter key="targeo_export.helper.class">Targeo\ExportBundle\Helper\GridHelper</parameter>
+    </parameters>
+
+    
+    <services>
+        <service id="targeo_export.exporter" class="%targeo_export.exporter.class%" />
+        <service id="targeo_export.helper" class="%targeo_export.helper.class%">
+            <argument type="service" id="templating" />
+        </service>
+        <service id="targeo_export.grid" class="%targeo_export.grid.class%">
+            <argument type="service" id="templating" />
+            <argument type="service" id="targeo_export.helper" />
+        </service>
+    </services>
+</container>

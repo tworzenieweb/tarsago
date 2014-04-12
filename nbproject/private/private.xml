@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/tworzenieweb/www/targeo/src/Targeo/ExportBundle/Resources/views/Default/index.html.twig</file>
+            <file>file:/home/tworzenieweb/www/targeo/src/Targeo/ExportBundle/Resources/views/Grid/template.html.twig</file>
+            <file>file:/home/tworzenieweb/www/targeo/src/Targeo/ExportBundle/Model/Output.php</file>
+            <file>file:/home/tworzenieweb/www/targeo/src/Targeo/ExportBundle/Controller/DefaultController.php</file>
+            <file>file:/home/tworzenieweb/www/targeo/src/Targeo/ExportBundle/Factory/OutputFactory.php</file>
+            <file>file:/home/tworzenieweb/www/targeo/app/config/config_dev.yml</file>
+            <file>file:/home/tworzenieweb/www/targeo/src/Targeo/ExportBundle/Resources/config/routing.xml</file>
+            <file>file:/home/tworzenieweb/www/targeo/src/Targeo/ExportBundle/Manager/ExportManager.php</file>
+            <file>file:/home/tworzenieweb/www/targeo/Gruntfile.js</file>
+            <file>file:/home/tworzenieweb/www/targeo/bower.json</file>
+            <file>file:/home/tworzenieweb/www/targeo/web/assets/less/app.less</file>
+            <file>file:/home/tworzenieweb/www/targeo/app/config/config.yml</file>
+            <file>file:/home/tworzenieweb/www/targeo/app/Resources/views/base.html.twig</file>
+            <file>file:/home/tworzenieweb/www/targeo/src/Targeo/ExportBundle/Model/Input.php</file>
+            <file>file:/home/tworzenieweb/www/targeo/app/config/routing_dev.yml</file>
+            <file>file:/home/tworzenieweb/www/targeo/src/Targeo/ExportBundle/Resources/views/Default/process.html.twig</file>
+            <file>file:/home/tworzenieweb/www/targeo/src/Targeo/ExportBundle/Helper/GridHelper.php</file>
+            <file>file:/home/tworzenieweb/www/targeo/app/AppKernel.php</file>
+            <file>file:/home/tworzenieweb/www/targeo/src/Targeo/ExportBundle/Model/CSV.php</file>
+            <file>file:/home/tworzenieweb/www/targeo/app/config/security.yml</file>
+            <file>file:/home/tworzenieweb/www/targeo/src/Targeo/ExportBundle/Renderer/Grid.php</file>
+            <file>file:/home/tworzenieweb/www/targeo/src/Targeo/ExportBundle/Resources/config/services.xml</file>
+            <file>file:/home/tworzenieweb/www/targeo/src/Targeo/ExportBundle/Resources/views/Grid/selectbox.html.twig</file>
+        </group>
+    </open-files>
+</project-private>

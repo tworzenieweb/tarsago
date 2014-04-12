@@ -1,0 +1,24 @@
+<table class="table">
+    <thead>
+        <tr>
+{% for label in csv.header %}
+            <th>{{ label }}<br />
+                <select name="field[{{ loop.index0 }}]">
+                    <option>Ignoruj to pole</option>
+                {{ helper.options | raw }}
+                </select>
+            
+            </th>
+{% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in csv.rows %}
+        <tr>
+            {% for cell in row %}
+            <td>{{ cell }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

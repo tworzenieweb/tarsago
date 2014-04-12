@@ -1,0 +1,4 @@
+targeo_export:
+    resource: "@TargeoExportBundle/Resources/config/routing.xml"
+    prefix:   /
+
