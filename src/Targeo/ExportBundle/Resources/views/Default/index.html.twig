@@ -1,9 +1,10 @@
-{% extends "::base.phtml.twig" %}
+{% extends "::base.html.twig" %}
 
-{{ form_start(form) }}
-    {{ form_errors(form) }}
 
-    {{ form_row(form.file) }}
+{% block body %}
 
-    <button type="submit">Exportuj</button>
-{{ form_end(form) }}
+<fieldset>
+{{ form(form, { 'style': 'horizontal' }) }}
+</fieldset>
+    
+{% endblock %}

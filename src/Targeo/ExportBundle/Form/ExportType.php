@@ -8,17 +8,27 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class ExportType extends AbstractType
 {
-        /**
+
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('file');
-        ;
+                ->add('file', null, array(
+                    'label' => 'Plik wejściowy'
+                ))
+                ->add('delimeter', null, array(
+                    'label' => 'Znak oddzielający (separator)'
+                ))
+                ->add('actions', 'form_actions', array(
+                    'buttons' => array(
+                        'save' => array('type' => 'submit', 'options' => array('label' => 'Prześlij', 'attr' => array('class' => 'pull-right'))),
+                    )
+                ));
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
@@ -36,4 +46,5 @@ class ExportType extends AbstractType
     {
         return 'targeo_exportbundle_export';
     }
+
 }

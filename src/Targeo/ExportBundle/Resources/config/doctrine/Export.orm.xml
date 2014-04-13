@@ -6,6 +6,7 @@
     </id>
     <field name="filename" type="string" column="filename"/>
     <field name="filenameContent" type="blob" column="filename_content"/>
+    <field name="delimeter" type="string" length="1" column="delimeter"/>
     <field name="createdAt" type="datetime" column="created_at"/>
     
     <lifecycle-callbacks>

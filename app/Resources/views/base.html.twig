@@ -2,14 +2,45 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <title>{% block title %}Tarsago Importer{% endblock %}</title>
+        {% block stylesheets %}
         <link type="text/css" rel="stylesheet" href="{{ asset('assets/css/all.min.css') }}" />
-        
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
     </head>
     <body>
+
+        <div class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="../" class="navbar-brand">Tarsago Importer</a>
+                    
+                </div>
+                <div class="navbar-collapse collapse" id="navbar-main">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+
+            <div class="page-header" id="banner">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h1>Przetwarzanie bazy wejściowej</h1>
+                        <p class="lead">Akceptuje pliki CSV</p>
+                    </div>
+                    
+                </div>
+            </div>
+
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+
+        </div>
+        {% block javascripts %}
+        <script src="//code.jquery.com/jquery-2.1.0.min.js"></script>
+        <script src="{{ asset('assets/js/scripts.min.js') }}"></script>
+        {% endblock %}
     </body>
 </html>

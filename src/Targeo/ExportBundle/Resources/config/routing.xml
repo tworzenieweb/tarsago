@@ -7,11 +7,12 @@
     <route id="targeo_export_homepage" pattern="/">
         <default key="_controller">TargeoExportBundle:Default:index</default>
     </route>
-    <route id="targeo_export_process" pattern="/process/">
-        <default key="_controller">TargeoExportBundle:Default:process</default>
-    </route>
     
     <route id="targeo_export_process" pattern="/process/{id}">
         <default key="_controller">TargeoExportBundle:Default:process</default>
+    </route>
+    
+    <route id="targeo_export_export" pattern="/export/{id}">
+        <default key="_controller">TargeoExportBundle:Default:export</default>
     </route>
 </routes>

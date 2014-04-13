@@ -53,11 +53,25 @@ class DefaultController extends Controller
             $grid = $this->get('targeo_export.grid')->render($csv);
             
             return $this->render('TargeoExportBundle:Default:process.html.twig', array(
-                'grid' => $grid
+                'grid' => $grid,
+                'export' => $export
             ));
             
         }
         
         return $this->redirect($this->generateUrl('targeo_export_homepage'));
+    }
+    
+    public function exportAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        
+        $export = $em->find('TargeoExportBundle:Export', $id);
+        
+        if($export)
+        {
+            $csv = $this->get('targeo_export.exporter')->process($export);
+            $this->get('targeo_export.exporter')->export($this->getRequest()->request->all(), $csv);
+        }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Targeo\ExportBundle\Helper;
 
-use Targeo\ExportBundle\Model\Output;
+use Targeo\ExportBundle\Model\OutputFactory;
 
 class GridHelper
 {
@@ -20,8 +20,9 @@ class GridHelper
         
         if($this->cached === null)
         {
+            $fields = OutputFactory::getAvailableFields();
             $this->cached = $this->engine->render('TargeoExportBundle:Grid:selectbox.html.twig', array(
-                'fields' => Output::getFields()));
+                'fields' => $fields));
         }
         
         return $this->cached;

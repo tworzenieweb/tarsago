@@ -1,24 +1,26 @@
-<table class="table">
-    <thead>
-        <tr>
-{% for label in csv.header %}
-            <th>{{ label }}<br />
-                <select name="field[{{ loop.index0 }}]">
-                    <option>Ignoruj to pole</option>
-                {{ helper.options | raw }}
-                </select>
-            
-            </th>
-{% endfor %}
-        </tr>
-    </thead>
-    <tbody>
-        {% for row in csv.rows %}
-        <tr>
-            {% for cell in row %}
-            <td>{{ cell }}</td>
+<div class="grid-wrapper col-lg-12">
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+    {% for label in csv.header %}
+                <th>{{ label }}<br />
+                    <select name="field[{{ loop.index0 }}]" class="form-control">
+                        <option value="">Ignoruj to pole</option>
+                    {{ helper.options | raw }}
+                    </select>
+                    <a href="#" class="hide-column"><i class="glyphicon glyphicon-remove"></i></a>
+                </th>
+    {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in csv.rows %}
+            <tr>
+                {% for cell in row %}
+                <td>{{ cell }}</td>
+                {% endfor %}
+            </tr>
             {% endfor %}
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>

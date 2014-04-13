@@ -3,12 +3,9 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     jshint: {
-      options: {
-        jshintrc: '.jshintrc'
-      },
       all: [
-        'Gruntfile.js'
-        
+        'Gruntfile.js',
+        'web/assets/js/app.js'
       ]
     },
     less: {
@@ -43,7 +40,8 @@ module.exports = function(grunt) {
             'web/assets/vendor/bootstrap/js/popover.js',
             'web/assets/vendor/bootstrap/js/scrollspy.js',
             'web/assets/vendor/bootstrap/js/tab.js',
-            'web/assets/vendor/bootstrap/js/affix.js'
+            'web/assets/vendor/bootstrap/js/affix.js',
+            'web/assets/js/app.js'
           ]
         },
         options: {
@@ -65,7 +63,7 @@ module.exports = function(grunt) {
         files: [
           '<%= jshint.all %>'
         ],
-        tasks: ['jshint', 'uglify']
+        tasks: ['uglify']
       },
       livereload: {
         // Browser live reloading
@@ -88,7 +86,6 @@ module.exports = function(grunt) {
 
   // Load tasks
   grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-less');

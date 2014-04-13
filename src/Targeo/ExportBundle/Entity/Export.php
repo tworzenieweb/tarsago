@@ -36,6 +36,12 @@ class Export
      * @var \Symfony\Component\HttpFoundation\File\UploadedFile
      */
     private $file;
+    
+    /**
+     *
+     * @var string
+     */
+    private $delimeter;
 
 
     /**
@@ -153,4 +159,17 @@ class Export
     {
         $this->createdAt = new \DateTime();
     }
+    
+    public function getDelimeter()
+    {
+        return $this->delimeter;
+    }
+
+    public function setDelimeter($delimeter)
+    {
+        $this->delimeter = $delimeter;
+        return $this;
+    }
+
+
 }

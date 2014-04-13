@@ -1,0 +1,8 @@
+braincrafted_bootstrap:
+    auto_configure:
+        assetic: false
+        
+twig:
+    form:
+        resources:
+            - TargeoExportBundle:Form:form_div_layout.html.twig

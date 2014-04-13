@@ -2,6 +2,17 @@
 
 {% block body %}
 
-{{ grid|raw }}
+<form action="{{ path('targeo_export_export', {id: export.id}) }}" method="POST" class="form-horizontal">
+    <div class="form-group">
+    {{ grid|raw }}
+    </div>
+
+    <div class="form-group">
+        <div class="col-lg-offset-2 col-lg-10">
+            <button type="submit" class="pull-right btn btn-primary">Exportuj</button>
+        </div>
+    </div>
+
+</form>
 
 {% endblock %}

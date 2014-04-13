@@ -20,7 +20,8 @@
         "sensio/generator-bundle": "2.3.*",
         "incenteev/composer-parameter-handler": "~2.0",
         "keboola/csv": "1.1.*",
-        "rhumsaa/array_column": "~1.1"
+        "rhumsaa/array_column": "~1.1",
+        "braincrafted/bootstrap-bundle": "~2.0"
     },
     "scripts": {
         "post-install-cmd": [
