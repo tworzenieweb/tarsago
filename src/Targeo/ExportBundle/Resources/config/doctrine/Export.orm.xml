@@ -8,6 +8,12 @@
     <field name="filenameContent" type="blob" column="filename_content"/>
     <field name="delimeter" type="string" length="1" column="delimeter"/>
     <field name="createdAt" type="datetime" column="created_at"/>
+    <field name="isCompleted" type="boolean" column="is_completed"/>
+    
+    <one-to-many field="rows"
+            target-entity="Targeo\ExportBundle\Entity\IM"
+            mapped-by="export"
+        />
     
     <lifecycle-callbacks>
                 <lifecycle-callback type="prePersist"

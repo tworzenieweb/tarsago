@@ -95,7 +95,7 @@ class ExportManager
         
     }
     
-    public function export($selectedHeaders, CSV $csv)
+    public function export($selectedHeaders, CSV $csv, Export $export)
     {
         $filteredSelectedHeaders = $selectedHeaders['field'];
         
@@ -106,34 +106,43 @@ class ExportManager
             throw new \Exception('Musisz wybrać przynajmniej jedną kolumnę');
         }
         
-        
-
+        $errors = null;
 
         foreach($csv->getRows() as $row)
         {
             $outputRow = array();
-
+            
             foreach($filteredSelectedHeaders as $inputIndex => $outputIndex) 
             {
                 
-                $outputRow[$this->outputFactory->getFieldNameForIndex($inputIndex)] = $row[$inputIndex];
-                
+                $outputRow[$this->outputFactory->getFieldNameForIndex($outputIndex)] = $row[$inputIndex];
                 
             }
-
+            
             $im = $this->outputFactory->create($outputRow);
 
             $this->applyOutputFormatting($im);
-            
+             
             $errors = $this->validator->validate($im);
             
-            var_dump($errors); exit;
+            if(count($errors) >= 1)
+            {
+                return $errors;
+            }
+            
+            // we set relation for merging the output
+            $im->setExport($export);
 
+            $export->setIsCompleted(true);
+            
             $this->em->persist($im);
 
         }
         
         $this->em->flush();
+        
+        
+        return true;
         
     }
     
@@ -172,6 +181,28 @@ class ExportManager
         }
         
         return $im;
+    }
+    
+    public function getFile(Export $export)
+    {
+        
+        $str = '';
+        
+        foreach($export->getRows() as $row)
+        {
+            foreach (OutputFactory::getFields() as $fieldName)
+            {
+                
+                $str .= $this->outputFactory->getValue($fieldName, $row);
+            }
+            
+            $str .= PHP_EOL;
+        }
+        
+        
+        $str = iconv('UTF-8', 'windows-1250', $str);
+        
+        return $str;
     }
     
 }

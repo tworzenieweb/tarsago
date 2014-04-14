@@ -16,11 +16,15 @@ class ExportType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+                ->add('filename', null, array(
+                    'label' => 'Nazwa pliku wyjściowego'
+                ))
                 ->add('file', null, array(
                     'label' => 'Plik wejściowy'
                 ))
                 ->add('delimeter', null, array(
-                    'label' => 'Znak oddzielający (separator)'
+                    'label' => 'Znak oddzielający (separator)',
+                    'attr' => array('widget_col' => '1')
                 ))
                 ->add('actions', 'form_actions', array(
                     'buttons' => array(

@@ -10,7 +10,7 @@
     <field name="typZamowienia" type="string" column="typ_zamowienia" length="2"/>
     <field name="kodPodpisu" type="string" column="kod_podpisu" length="1"/>
     <field name="iloscRekordow" type="string" column="ilosc_rekordow" length="1"/>
-    <field name="dataZamowienia" type="date" column="data_zamowienia"/>
+    <field name="dataZamowienia" type="string" column="data_zamowienia" length="8"/>
     <field name="reason" type="string" column="reason" length="2"/>
     <field name="dnp" type="string" column="dnp" length="1"/>
     <field name="kontakt" type="string" column="kontakt" length="1"/>
@@ -24,5 +24,16 @@
     <field name="idChannel" type="string" column="id_channel" length="15"/>
     <field name="ipAddress" type="string" column="ip_address" length="15"/>
     <field name="memo" type="string" column="memo" length="255"/>
+    
+    <many-to-one field="export"
+                 target-entity="Targeo\ExportBundle\Entity\Export"
+                 inversed-by="rows"
+                 join-column="export">
+        <join-column
+            name="export_id"
+            referenced-column-name="id"
+        />
+    </many-to-one>
+    
   </entity>
 </doctrine-mapping>

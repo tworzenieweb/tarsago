@@ -18,7 +18,10 @@
                     
                 </div>
                 <div class="navbar-collapse collapse" id="navbar-main">
-
+                        <ul class="nav navbar-nav">
+                            <li><a href="{{ path('product') }}">Produkt</a></li>
+                            <li><a href="{{ path('export') }}">Exporty</a></li>
+                        </ul>
                 </div>
             </div>
         </div>
@@ -34,6 +37,9 @@
                     
                 </div>
             </div>
+            
+            
+        {% include 'BraincraftedBootstrapBundle::flash.html.twig' %}
 
         {% block body %}{% endblock %}
 

@@ -65,9 +65,108 @@
         
     }
     
+    var columnChecker = {
+        
+        context: null,
+        
+        init: function() {
+            
+            this.context = $('.grid-wrapper');
+            
+            console.log('Column checker initialized');
+            
+            $('button[type=submit]', this.context).prop('disabled', true);
+            
+            $('.grid-wrapper').on('change', 'select', $.proxy(this.changeEvent, this));
+            
+            $('.grid-wrapper select').trigger('change');
+            
+            this.showMissingFields($('select:eq(0) option[value!=""]', this.context));
+            
+        },
+        
+        showMissingFields: function(remaining)
+        {
+            var container = $('#missing-fields');
+            
+            var list = $('<ul>', {
+                class: "list-inline"
+            });
+            
+            remaining.each(function() {
+                
+                var label = '<span class="label label-danger">%s</span>'.replace('%s', $(this).text());
+                var li = $('<li>').html(label);
+                
+                list.append(li);
+                
+            });
+            
+            list.prepend("Pola do uzupełnienia:<br />");
+            
+            container.html(list);
+        },
+        
+        changeEvent: function(e)
+        {   
+            $ct = $(e.currentTarget);
+            $ctOption = $('select option[value="' + $ct.val() + '"]',this.context);
+            
+            if($ct.val())
+            {
+                $ct.closest('th').addClass('correct');
+                $ctOption.html($ctOption.eq(0).text() + ' &#10004;')
+            }
+            else 
+            {
+                $ct.closest('th').removeClass('correct');
+                $('option', $ct).each(function() {
+                    $(this).html($(this).text().replace(' &#10004;', ''))
+                });
+                        
+                        
+            }
+            
+            var context = this.context;
+            
+            var remaining = $('select:eq(0) option[value!=""]', context).filter(function() {
+                
+                if($('select option[value="' + $(this).val() +'"]:selected', context).length)
+                {
+                    return false;
+                }
+                
+                return true;
+                
+            });
+            
+            this.showMissingFields(remaining);
+            
+            if(remaining.length === 0)
+            {
+                $('button[type=submit]').prop('disabled', false).on('click', function(e) {
+                    
+                    $('#download').modal({show: true}).on('hidden.bs.modal', function (e) {
+                    
+                        window.location.href = $('form').data('redirect');
+                    
+                    });
+                    
+                    
+                    
+                });
+            }
+            else {
+                $('button[type=submit]').prop('disabled', true);
+            }
+        }
+        
+    }
+    
     $(function() {
         fileChangeLog.init();
         columnSwitcher.init();
+        columnChecker.init();
     });
     
 })(jQuery);

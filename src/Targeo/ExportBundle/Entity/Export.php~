@@ -49,11 +49,6 @@ class Export
      * @var \Doctrine\Common\Collections\ArrayCollection
      */
     protected $rows;
-    
-        /**
-     * @var boolean
-     */
-    private $isCompleted = false;
 
     
 
@@ -163,6 +158,7 @@ class Export
             return;
         }
         
+        $this->filename = $this->file->getClientOriginalName();
         $this->filenameContent = file_get_contents($this->file->getPathname());
         $this->file = null;
     }
@@ -186,7 +182,6 @@ class Export
     public function __construct()
     {
         $this->rows = new ArrayCollection();
-        $this->filename = sprintf('IM%sBP.TXT', date('md'));
     }
 
 
@@ -225,29 +220,5 @@ class Export
     public function getRows()
     {
         return $this->rows;
-    }
-
-
-    /**
-     * Set isCompleted
-     *
-     * @param boolean $isCompleted
-     * @return Export
-     */
-    public function setIsCompleted($isCompleted)
-    {
-        $this->isCompleted = $isCompleted;
-
-        return $this;
-    }
-
-    /**
-     * Get isCompleted
-     *
-     * @return boolean 
-     */
-    public function getIsCompleted()
-    {
-        return $this->isCompleted;
     }
 }

@@ -1,17 +1,18 @@
 .grid-wrapper {
     
     overflow: auto;
-    height: 620px;
+    max-height: 620px;
     
     table {
         thead {
-            #gradient .vertical(#60abf8, #4096ee);
+            #gradient .vertical(lighten(#60abf8, 20%), lighten(#4096ee, 20%));
             
             th {
                 color: #fff;
                 select {
                     width: 150px;
                     margin-top: 5px;
+                    font-size: 12px;
                 }
                 
                 position: relative;
@@ -20,6 +21,11 @@
                     position: absolute;
                     right: 5px;
                     top: 0;
+                    color: #000;
+                }
+                
+                &.correct {
+                    #gradient .vertical(#CBF08B, darken(#ACD661,10%));
                     color: #000;
                 }
             }

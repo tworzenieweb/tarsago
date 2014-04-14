@@ -1,3 +1,3 @@
-{% for field in fields %}
-    <option value="{{ loop.index0 }}">{{ field }}</option>
+{% for key, field in fields %}
+    <option value="{{ key }}">{{ field }}</option>
 {% endfor %}

@@ -57,6 +57,7 @@ class OutputFactory
         "iloscRekordow" => '1',
         "dnp" => '',
         "DNPLine" => '0',
+        'opcje' => 'KU3;',
         "source" => 'BP',
         "idKlienta" => '',
         "idKlienta2" => '',
@@ -64,6 +65,7 @@ class OutputFactory
         'iloscSztuk' => '1',
         'idChannel' => '',
         'ipAddress' => '',
+        'typZamowienia' => 'PA',
         
     );
     
@@ -128,11 +130,26 @@ class OutputFactory
         
         $this->initDefault($im);
         
+        if($data['reason'] > 0)
+        {
+            $data['idZamowienia'] = $data['kodProduktu'] = $data['opcje'] = '';
+
+            if($data['reason'] >= 46)
+            {
+                $data['typZamowienia'] = 'NA';
+            }
+            else {
+                $data['typZamowienia'] = 'SA';
+            }
+
+        }
+        
         foreach(self::$fields as $key)
         {
             
-            if(isset($data[$key]) && !in_array($key, self::$defaults))
+            if(isset($data[$key]))
             {
+                
                 $this->setValue($key, $data[$key], $im);
             }
             

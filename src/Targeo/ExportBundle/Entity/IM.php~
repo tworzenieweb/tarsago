@@ -367,7 +367,7 @@ class IM
      * @param string $dnpline
      * @return IM
      */
-    public function setDNPline($dnpline)
+    public function setDnpline($dnpline)
     {
         $this->DNPLine = $dnpline;
 
@@ -379,7 +379,7 @@ class IM
      *
      * @return string 
      */
-    public function getDNPline()
+    public function getDnpline()
     {
         return $this->DNPLine;
     }
@@ -613,5 +613,4 @@ class IM
     {
         return $this->export;
     }
-
 }

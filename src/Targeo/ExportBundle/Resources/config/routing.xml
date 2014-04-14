@@ -15,4 +15,10 @@
     <route id="targeo_export_export" pattern="/export/{id}">
         <default key="_controller">TargeoExportBundle:Default:export</default>
     </route>
+    
+    
+    <import resource="@TargeoExportBundle/Resources/config/routing/product.xml" prefix="/product" />
+    <import resource="@TargeoExportBundle/Resources/config/routing/export.xml" prefix="/exported" />
+    
+    
 </routes>
