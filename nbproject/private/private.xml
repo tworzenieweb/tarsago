@@ -5,9 +5,8 @@
         <group>
             <file>file:/home/tworzenieweb/www/targeo/src/Targeo/ExportBundle/Resources/views/Default/index.html.twig</file>
             <file>file:/home/tworzenieweb/www/targeo/src/Targeo/ExportBundle/Resources/views/Grid/template.html.twig</file>
-            <file>file:/home/tworzenieweb/www/targeo/src/Targeo/ExportBundle/Model/Output.php</file>
             <file>file:/home/tworzenieweb/www/targeo/src/Targeo/ExportBundle/Controller/DefaultController.php</file>
-            <file>file:/home/tworzenieweb/www/targeo/src/Targeo/ExportBundle/Factory/OutputFactory.php</file>
+            <file>file:/home/tworzenieweb/www/targeo/src/Targeo/ExportBundle/Model/OutputFactory.php</file>
             <file>file:/home/tworzenieweb/www/targeo/app/config/config_dev.yml</file>
             <file>file:/home/tworzenieweb/www/targeo/src/Targeo/ExportBundle/Resources/config/routing.xml</file>
             <file>file:/home/tworzenieweb/www/targeo/src/Targeo/ExportBundle/Manager/ExportManager.php</file>

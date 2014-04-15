@@ -52,7 +52,6 @@ class OutputFactory
 //Memo
     
     protected static $defaults = array(
-        "nrKlienta" => '',
         "kodPodpisu" => 'B',
         "iloscRekordow" => '1',
         "dnp" => '',
@@ -130,20 +129,27 @@ class OutputFactory
         
         $this->initDefault($im);
         
-        if($data['reason'] > 0)
+        if($data['reason'] > 0 && $data['reason'] < 81)
         {
+            
             $data['idZamowienia'] = $data['kodProduktu'] = $data['opcje'] = '';
-
+            $data['iloscSztuk'] = 0;
+            
             if($data['reason'] >= 46)
             {
-                $data['typZamowienia'] = 'NA';
+                $data['typZamowienia'] = 'NO';
             }
-            else {
+            else if($data['reason'] < 46) {
+                
                 $data['typZamowienia'] = 'SA';
+                $data['kontakt'] = 'N';
             }
-
+        }
+        else {
+            $data['reason'] = 81;
         }
         
+                
         foreach(self::$fields as $key)
         {
             
