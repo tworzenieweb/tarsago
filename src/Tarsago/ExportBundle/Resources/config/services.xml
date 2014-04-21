@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    
+    <parameters>
+        <parameter key="tarsago_export.exporter.class">Tarsago\ExportBundle\Manager\ExportManager</parameter>
+        <parameter key="tarsago_export.grid.class">Tarsago\ExportBundle\Renderer\Grid</parameter>
+        <parameter key="tarsago_export.helper.class">Tarsago\ExportBundle\Helper\GridHelper</parameter>
+        <parameter key="tarsago_export.output_factory.class">Tarsago\ExportBundle\Model\OutputFactory</parameter>
+    </parameters>
+
+    
+    <services>
+        <service id="tarsago_export.output_factory" class="%tarsago_export.output_factory.class%" />
+        <service id="tarsago_export.exporter" class="%tarsago_export.exporter.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <argument type="service" id="tarsago_export.output_factory" />
+            <argument type="service" id="validator" />
+        </service>
+        <service id="tarsago_export.helper" class="%tarsago_export.helper.class%">
+            <argument type="service" id="templating" />
+        </service>
+        <service id="tarsago_export.grid" class="%tarsago_export.grid.class%">
+            <argument type="service" id="templating" />
+            <argument type="service" id="tarsago_export.helper" />
+        </service>
+    </services>
+</container>

@@ -12,7 +12,8 @@ module.exports = function(grunt) {
       dist: {
         files: {
           'web/assets/css/all.min.css': [
-            'web/assets/less/app.less'
+            'web/assets/less/app.less',
+            'web/assets/vendor/bootstrap-datepicker/build/build3.less'
           ]
         },
         options: {
@@ -41,6 +42,8 @@ module.exports = function(grunt) {
             'web/assets/vendor/bootstrap/js/scrollspy.js',
             'web/assets/vendor/bootstrap/js/tab.js',
             'web/assets/vendor/bootstrap/js/affix.js',
+            'web/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js',
+            'web/assets/vendor/bootstrap-datepicker/js/locales/bootstrap-datepicker.pl.js',
             'web/assets/js/app.js'
           ]
         },

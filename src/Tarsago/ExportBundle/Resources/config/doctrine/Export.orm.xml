@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity repository-class="Tarsago\ExportBundle\Entity\ExportRepository" name="Tarsago\ExportBundle\Entity\Export">
+    <id name="id" type="integer" column="id">
+      <generator strategy="AUTO"/>
+    </id>
+    <field name="filename" type="string" column="filename"/>
+    <field name="filenameContent" type="blob" column="filename_content"/>
+    <field name="delimeter" type="string" length="1" column="delimeter"/>
+    <field name="createdAt" type="string" length="10" column="created_at"/>
+    <field name="isCompleted" type="boolean" column="is_completed"/>
+    
+    <one-to-many field="rows"
+            target-entity="Tarsago\ExportBundle\Entity\IM"
+            mapped-by="export"
+        />
+  </entity>
+</doctrine-mapping>

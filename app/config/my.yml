@@ -5,4 +5,4 @@ braincrafted_bootstrap:
 twig:
     form:
         resources:
-            - TargeoExportBundle:Form:form_div_layout.html.twig
+            - TarsagoExportBundle:Form:form_div_layout.html.twig

@@ -1,10 +1,15 @@
 (function($) {
 
-    var fileChangeLog = {
+    var initialForm = {
         
         init: function() {
             
             console.log('FileChangeLog initialized');
+            
+            $('.input-group.date').datepicker({
+                format: 'yyyymmdd',
+                language: 'pl'
+            });
             
             $(document).on('change', '.btn-file :file', function() {
                 
@@ -164,7 +169,7 @@
     }
     
     $(function() {
-        fileChangeLog.init();
+        initialForm.init();
         columnSwitcher.init();
         columnChecker.init();
     });

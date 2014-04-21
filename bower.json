@@ -19,6 +19,7 @@
     "bootstrap": null,
     "underscore": null,
     "requirejs": null,
-    "requirejs-text": null
+    "requirejs-text": null,
+    "bootstrap-datepicker": null
   }
 }

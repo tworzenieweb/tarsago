@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity repository-class="Tarsago\ExportBundle\Entity\ProductRepository" name="Tarsago\ExportBundle\Entity\Product">
+    <id name="id" type="integer" column="id">
+      <generator strategy="AUTO"/>
+    </id>
+    <field name="nazwa" type="string" column="nazwa" length="255"/>
+    <field name="kodProduktu" type="string" column="kod_produktu" length="7"/>
+    <field name="cena" type="decimal" column="cena"/>
+    <field name="nazwaKampanii" type="string" column="nazwa_kampanii" length="6"/>
+    <field name="kodMarketingowy" type="string" column="kod_marketingowy" length="6"/>
+  </entity>
+</doctrine-mapping>

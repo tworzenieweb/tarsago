@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+
+    <class name="Tarsago\ExportBundle\Entity\IM">
+<!--        <property name="nrKlienta">
+        </property>
+        <property name="kodProduktu">
+        </property>
+        <property name="kodMarketingowy">
+        </property>
+        <property name="typZamowienia">
+        </property>
+        <property name="kodPodpisu">
+        </property>
+        <property name="iloscRekordow">
+        </property>-->
+        <property name="dataZamowienia">
+            <constraint name="Regex">
+                <option name="pattern">/^([0-9]{4}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1]))?$/</option>
+            </constraint>
+        </property>
+<!--        <property name="reason">
+        </property>
+        <property name="dnp">
+        </property>
+        <property name="kontakt">
+        </property>
+        <property name="DNPLine">
+        </property>
+        <property name="opcje">
+        </property>
+        <property name="source">
+        </property>
+        <property name="idKlienta">
+        </property>
+        <property name="idKlienta2">
+        </property>
+        <property name="idZamowienia">
+        </property>
+        <property name="iloscSztuk">
+        </property>
+        <property name="idChannel">
+        </property>
+        <property name="ipAddress">
+        </property>
+        <property name="memo">
+        </property>-->
+    </class>
+    
+    <class name="Tarsago\ExportBundle\Entity\Export">
+        <property name="file">
+            <constraint name="File">
+                <option name="maxSize">6000000</option>
+            </constraint>
+        </property>
+        <property name="file">
+            <constraint name="NotBlank">
+                <option name="message">Wybierz plik do wczytania</option>
+            </constraint>
+        </property>
+        <property name="createdAt">
+            <constraint name="Regex">
+                <option name="pattern">/^([0-9]{4}(0[1-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1]))?$/</option>
+            </constraint>
+        </property>
+        <property name="delimeter">
+            <constraint name="NotBlank">
+                <option name="message">Znak oddzielający nie może być pusty</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">1</option>
+                <option name="exactMessage">Podaj dokładnie jeden znak np. ";" lub ","</option>
+            </constraint>
+        </property>
+    </class>
+</constraint-mapping>

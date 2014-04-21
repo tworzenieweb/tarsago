@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<routes xmlns="http://symfony.com/schema/routing"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="tarsago_export_homepage" pattern="/">
+        <default key="_controller">TarsagoExportBundle:Default:index</default>
+    </route>
+    
+    <route id="tarsago_export_process" pattern="/process/{id}">
+        <default key="_controller">TarsagoExportBundle:Default:process</default>
+    </route>
+    
+    <route id="tarsago_export_export" pattern="/export/{id}">
+        <default key="_controller">TarsagoExportBundle:Default:export</default>
+    </route>
+    
+    
+    <import resource="@TarsagoExportBundle/Resources/config/routing/product.xml" prefix="/product" />
+    <import resource="@TarsagoExportBundle/Resources/config/routing/export.xml" prefix="/exported" />
+    
+    
+</routes>

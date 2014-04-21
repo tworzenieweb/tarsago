@@ -1,4 +1,4 @@
-targeo_export:
-    resource: "@TargeoExportBundle/Resources/config/routing.xml"
+tarsago_export:
+    resource: "@TarsagoExportBundle/Resources/config/routing.xml"
     prefix:   /
 

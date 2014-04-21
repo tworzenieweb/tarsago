@@ -1,0 +1,38 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Szczegóły eksportu {{ entity.filename }}</h1>
+
+    <table class="record_properties table table-striped">
+        <tbody>
+            <tr>
+                <th><h3>Nazwa pliku</h3></th>
+                <td>{{ entity.filename }}</td>
+            </tr>
+            <tr>
+                <th>Utworzono</th>
+                <td>{{ entity.createdAt|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Ukończono</th>
+                <td>{% if entity.isCompleted %}<i class="glyphicon glyphicon-check"></i>{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions list-inline">
+    <li>
+        <a href="{{ path('export') }}" class="btn btn-sm btn-info">
+            Powrót do listy
+        </a>
+        
+        <a href="{{ path('tarsago_export_export', {id: entity.id}) }}" class="btn btn-sm btn-default">
+            Pobierz plik eksportu
+        </a>
+    </li>
+</ul>
+{% endblock %}

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity repository-class="Tarsago\ExportBundle\Entity\IMRepository" name="Tarsago\ExportBundle\Entity\IM">
+    <id name="id" type="integer" column="id">
+      <generator strategy="AUTO"/>
+    </id>
+    <field name="nrKlienta" type="string" column="nr_klienta" length="9" />
+    <field name="kodProduktu" type="string" column="kod_produktu" length="8"/>
+    <field name="kodMarketingowy" type="string" column="kod_marketingowy" length="6"/>
+    <field name="typZamowienia" type="string" column="typ_zamowienia" length="2"/>
+    <field name="kodPodpisu" type="string" column="kod_podpisu" length="1"/>
+    <field name="iloscRekordow" type="string" column="ilosc_rekordow" length="1"/>
+    <field name="dataZamowienia" type="string" column="data_zamowienia" length="8"/>
+    <field name="reason" type="string" column="reason" length="2"/>
+    <field name="dnp" type="string" column="dnp" length="1"/>
+    <field name="kontakt" type="string" column="kontakt" length="1"/>
+    <field name="DNPLine" type="string" column="dnpline" length="5"/>
+    <field name="opcje" type="string" column="opcje" length="12"/>
+    <field name="source" type="string" column="source" length="2"/>
+    <field name="idKlienta" type="string" column="id_klienta" length="7"/>
+    <field name="idKlienta2" type="string" column="id_klienta2" length="7"/>
+    <field name="idZamowienia" type="string" column="id_zamowienia" length="9"/>
+    <field name="iloscSztuk" type="string" column="ilosc_sztuk" length="3"/>
+    <field name="idChannel" type="string" column="id_channel" length="15"/>
+    <field name="ipAddress" type="string" column="ip_address" length="15"/>
+    <field name="memo" type="string" column="memo" length="255"/>
+    <!--Pola do RI-->
+    <field name="dataTrans" type="string" column="data_trans" length="8"/>
+    <field name="dataImp" type="string" column="data_imp" length="8"/>
+    <field name="dataExp" type="string" column="data_exp" length="8"/>
+    <field name="kampania" type="string" column="kampania" length="6"/>
+    <field name="mrktcd" type="string" column="mrktcd" length="6"/>
+    <field name="produkt" type="string" column="produkt" length="7"/>
+    <field name="prodect" type="string" column="prodect" length="1"/>
+    <field name="stan" type="string" column="stan" length="1"/>
+    <field name="ftype" type="string" column="ftype" length="10"/>
+    <field name="vendor" type="string" column="vendor" length="10"/>
+    <!--Do porównywania-->
+    <field name="cmpField" type="string" column="cmpField" length="255"/>
+    <!--Pola do CH-->
+    <field name="region" type="string" column="region" length="2"/>
+    <field name="blank" type="string" column="blank" length="18"/>
+    <field name="zip" type="string" column="zip" length="5"/>
+    <field name="blank2" type="string" column="blank2" length="17"/>
+    <field name="country" type="string" column="country" length="3"/>
+    <field name="account" type="string" column="account" length="9"/>
+    <field name="symbol" type="string" column="symbol" length="6"/>
+    <field name="name" type="string" column="name" length="30"/>
+    <field name="company" type="string" column="company" length="27"/>
+    <field name="address1" type="string" column="address1" length="27"/>
+    <field name="city" type="string" column="city" length="19"/>
+    <field name="address2" type="string" column="address2" length="27"/>
+    <field name="blank3" type="string" column="blank3" length="20"/>
+    <field name="sex" type="string" column="sex" length="2"/>
+    <field name="blank4" type="string" column="blank4" length="38"/>
+    
+    <indexes>
+            <index name="cmpField_idx" columns="cmpField"/>
+    </indexes>
+    
+    <many-to-one field="export"
+                 target-entity="Tarsago\ExportBundle\Entity\Export"
+                 inversed-by="rows"
+                 join-column="export">
+        <join-column
+            name="export_id"
+            referenced-column-name="id"
+        />
+    </many-to-one>
+    
+  </entity>
+</doctrine-mapping>
