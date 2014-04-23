@@ -1,9 +1,9 @@
 <?php
 
-namespace Targeo\ExportBundle\Entity;
+namespace Tarsago\ExportBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Targeo\ExportBundle\Entity\Export;
+use Tarsago\ExportBundle\Entity\Export;
 
 /**
  * IM
@@ -84,6 +84,11 @@ class IM
      * @var string
      */
     private $idKlienta;
+    
+    /**
+     * @var string
+     */
+    private $idKlienta2;
 
     /**
      * @var string
@@ -111,7 +116,7 @@ class IM
     private $memo;
     
     /**
-     * @var \Targeo\ExportBundle\Entity\CSV
+     * @var \Tarsago\ExportBundle\Entity\CSV
      */
     private $export;
     
@@ -696,7 +701,7 @@ class IM
     /**
      * Set export
      *
-     * @param \Targeo\ExportBundle\Entity\Export $export
+     * @param \Tarsago\ExportBundle\Entity\Export $export
      * @return IM
      */
     public function setExport(Export $export = null)
@@ -709,7 +714,7 @@ class IM
     /**
      * Get export
      *
-     * @return \Targeo\ExportBundle\Entity\Export
+     * @return \Tarsago\ExportBundle\Entity\Export
      */
     public function getExport()
     {
@@ -1315,5 +1320,29 @@ class IM
     public function getAccount()
     {
         return $this->account;
+    }
+
+
+    /**
+     * Set idKlienta2
+     *
+     * @param string $idKlienta2
+     * @return IM
+     */
+    public function setIdKlienta2($idKlienta2)
+    {
+        $this->idKlienta2 = $idKlienta2;
+
+        return $this;
+    }
+
+    /**
+     * Get idKlienta2
+     *
+     * @return string 
+     */
+    public function getIdKlienta2()
+    {
+        return $this->idKlienta2;
     }
 }

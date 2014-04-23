@@ -13,7 +13,8 @@ module.exports = function(grunt) {
         files: {
           'web/assets/css/all.min.css': [
             'web/assets/less/app.less',
-            'web/assets/vendor/bootstrap-datepicker/build/build3.less'
+            'web/assets/vendor/bootstrap-datepicker/build/build3.less',
+            'web/assets/vendor/datatables/media/css/jquery.dataTables.css'
           ]
         },
         options: {
@@ -44,6 +45,7 @@ module.exports = function(grunt) {
             'web/assets/vendor/bootstrap/js/affix.js',
             'web/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js',
             'web/assets/vendor/bootstrap-datepicker/js/locales/bootstrap-datepicker.pl.js',
+            'web/assets/vendor/datatables/media/js/jquery.dataTables.js',
             'web/assets/js/app.js'
           ]
         },

@@ -9,6 +9,7 @@
     <field name="delimeter" type="string" length="1" column="delimeter"/>
     <field name="createdAt" type="string" length="10" column="created_at"/>
     <field name="isCompleted" type="boolean" column="is_completed"/>
+    <field name="changeAddress" type="boolean" column="change_address"/>
     
     <one-to-many field="rows"
             target-entity="Tarsago\ExportBundle\Entity\IM"

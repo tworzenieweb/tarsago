@@ -1,6 +1,6 @@
 <?php
 
-namespace Targeo\ExportBundle\Entity;
+namespace Tarsago\ExportBundle\Entity;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
@@ -182,16 +182,17 @@ class Export
     {
         $this->rows = new ArrayCollection();
         $this->filename = sprintf('IM%sBP.TXT', date('md'));
+        $this->createdAt = date('Ymd');
     }
 
 
     /**
      * Add row
      *
-     * @param \Targeo\ExportBundle\Entity\IM $row
+     * @param \Tarsago\ExportBundle\Entity\IM $row
      * @return Export
      */
-    public function addRow(\Targeo\ExportBundle\Entity\IM $row)
+    public function addRow(\Tarsago\ExportBundle\Entity\IM $row)
     {
         
         if(!$this->rows->contains($row)) {
@@ -205,9 +206,9 @@ class Export
     /**
      * Remove rows
      *
-     * @param \Targeo\ExportBundle\Entity\IM $rows
+     * @param \Tarsago\ExportBundle\Entity\IM $rows
      */
-    public function removeRow(\Targeo\ExportBundle\Entity\IM $rows)
+    public function removeRow(\Tarsago\ExportBundle\Entity\IM $rows)
     {
         $this->rows->removeElement($rows);
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Targeo\ExportBundle\Entity;
+namespace Tarsago\ExportBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 

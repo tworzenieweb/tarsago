@@ -14,12 +14,13 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "1.10",
+    "jquery": ">= 1.10",
     "backbone": null,
     "bootstrap": null,
     "underscore": null,
     "requirejs": null,
     "requirejs-text": null,
-    "bootstrap-datepicker": null
+    "bootstrap-datepicker": null,
+    "datatables": null
   }
 }

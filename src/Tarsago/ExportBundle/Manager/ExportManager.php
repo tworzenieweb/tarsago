@@ -120,7 +120,7 @@ class ExportManager
                 
             }
             
-            $im = $this->outputFactory->create($outputRow);
+            $im = $this->outputFactory->create($outputRow, $export);
 
             $this->applyOutputFormatting($im);
             
@@ -131,9 +131,6 @@ class ExportManager
             {
                 return $errors;
             }
-            
-            // we set relation for merging the output
-            $im->setExport($export);
             
             $im = $this->outputFactory->prePersist($im);
             
@@ -193,6 +190,12 @@ class ExportManager
         
         foreach(OutputFactory::getFields() as $field)
         {
+            
+            if(strstr($field, 'memo:') !== false)
+            {
+                continue;
+            }
+            
             $mapping = $class->getFieldMapping($field);
             
             if(!empty($mapping['length']))
@@ -231,10 +234,14 @@ class ExportManager
         $filename3 = str_replace(array('IM'), array('FP'), $filename);
         $filename4 = str_replace(array('IM'), array('CH'), $filename);
         
-        
         $f[$filename] = $this->getIMFile($export);
         $f[$filename2] = $this->getRIFile($export);
-        $f[$filename4] = $this->getCHFile($export);
+        
+        if($export->getChangeAddress())
+        {
+            $f[$filename4] = $this->getCHFile($export);
+        }
+        
         $f[$filename3] = $filename3;
         
         
@@ -255,7 +262,12 @@ class ExportManager
         $zip->addFile($f[$filename], $filename);
         $zip->addFile($f[$filename2], $filename2);
         $zip->addFile($f[$filename3], $filename3);
-        $zip->addFile($f[$filename4], $filename4);
+        
+        if($export->getChangeAddress())
+        {
+            $zip->addFile($f[$filename4], $filename4);
+        }
+        
         $zip->close();
         
         return $f1;
@@ -342,6 +354,8 @@ class ExportManager
             'blank3',
             'sex',
             'blank4',
+            "memo:typ_telefonu",
+            "memo:nr_telefonu",
         );
 
         $fp = fopen($filename, 'w+');

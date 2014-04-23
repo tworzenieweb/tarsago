@@ -78,6 +78,13 @@
             
             this.context = $('.grid-wrapper');
             
+//            $('table', this.context).dataTable({
+//                "bScrollInfinite": true,
+//                "bScrollCollapse": true,
+//                "sScrollY": "620px",
+//                "sPaginationType": "full_numbers"
+//            });
+            
             console.log('Column checker initialized');
             
             $('button[type=submit]', this.context).prop('disabled', true);

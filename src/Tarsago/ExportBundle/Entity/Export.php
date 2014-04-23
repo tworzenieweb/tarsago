@@ -54,6 +54,11 @@ class Export
      * @var boolean
      */
     private $isCompleted = false;
+    
+    /**
+     * @var boolean
+     */
+    private $changeAddress = false;
 
     
 
@@ -245,5 +250,29 @@ class Export
     public function getIsCompleted()
     {
         return $this->isCompleted;
+    }
+
+
+    /**
+     * Set changeAddress
+     *
+     * @param boolean $changeAddress
+     * @return Export
+     */
+    public function setChangeAddress($changeAddress)
+    {
+        $this->changeAddress = $changeAddress;
+
+        return $this;
+    }
+
+    /**
+     * Get changeAddress
+     *
+     * @return boolean 
+     */
+    public function getChangeAddress()
+    {
+        return $this->changeAddress;
     }
 }

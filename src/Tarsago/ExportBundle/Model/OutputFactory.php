@@ -27,6 +27,8 @@ class OutputFactory
         "iloscSztuk",
         "idChannel",
         "ipAddress",
+        "memo:typ_telefonu",
+        "memo:nr_telefonu",
         "memo",
         
         'dataTrans',
@@ -85,6 +87,7 @@ class OutputFactory
         'idChannel' => '',
         'ipAddress' => '',
         'typZamowienia' => 'PA',
+        "memo" => '',
         
         // te pola będą brane z normalnego IM
         'dataTrans' => '',
@@ -167,7 +170,7 @@ class OutputFactory
      * @param array $data
      * @return \Tarsago\ExportBundle\Entity\IM
      */
-    public function create(array $data)
+    public function create(array $data, \Tarsago\ExportBundle\Entity\Export $export)
     {
         
         $im = new IM();
@@ -194,10 +197,18 @@ class OutputFactory
             $data['reason'] = 81;
         }
         
+        $data['dataZamowienia'] = date('Ymd', strtotime($data['dataZamowienia']));
+        
+        if(strlen($data['kodProduktu']) == 7)
+        {
+            // we need to add additional zero if product has only 7 digits
+            $data['kodProduktu'] = $data['kodProduktu'] . '0';
+        }
+        
         $data['dataTrans'] = $data['dataImp'] = $data['dataZamowienia'];
         $data['mrktcd'] = $data['kodMarketingowy'];
         $data['produkt'] = substr($data['kodProduktu'],0,7);
-        $data['prodect'] = strlen($data['kodProduktu'] > 7) ? substr($data['kodProduktu'],7,1) : "0";
+        $data['prodect'] = strlen($data['kodProduktu']) > 7 ? substr($data['kodProduktu'],7,1) : "0";
         $data['account'] = $data['nrKlienta'];
         $data['ftype'] = !empty($data['address1']) ? 'CHADD' : 'CLEAR';
         
@@ -209,7 +220,16 @@ class OutputFactory
            $data['sex'] = '00';
         }
         
+        if($data['memo:typ_telefonu']) {
+            $data['memo'] = sprintf('<%1$s:%2$d>', $data['memo:typ_telefonu'], $data['memo:nr_telefonu']);
+        }
         
+        unset($data['memo:typ_telefonu'], $data['memo:nr_telefonu']);
+
+        if($data['address1'])
+        {
+            $export->setChangeAddress(true);
+        }
                 
         foreach(self::$fields as $key)
         {
@@ -221,6 +241,8 @@ class OutputFactory
             }
             
         }
+        
+        $im->setExport($export);
         
         return $im;
         
