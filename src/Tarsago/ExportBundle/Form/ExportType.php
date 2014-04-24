@@ -25,9 +25,7 @@ class ExportType extends AbstractType
                 ->add('createdAt', 'text', array(
                     'label' => 'Data exportu',
                     'attr' => array(
-                        'data-provide' => "datepicker", 
                         'widget_col' => '2', 
-                        'data-date-format' => "yyyy-mm-dd",
                         'class' => 'date',
                         'input_group' => array('append' => '.icon-th')
                     )

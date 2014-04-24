@@ -6,10 +6,10 @@
             
             console.log('FileChangeLog initialized');
             
-            $('.input-group.date').datepicker({
-                format: 'yyyymmdd',
-                language: 'pl'
-            });
+            $.fn.datepicker.defaults.format = "yyyymmdd";
+            $.fn.datepicker.defaults.language = "pl";
+            
+            $('.input-group.date').datepicker();
             
             $(document).on('change', '.btn-file :file', function() {
                 
