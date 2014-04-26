@@ -60,6 +60,13 @@ class ExportController extends Controller
         if($export)
         {
             $this->get('tarsago_export.exporter')->publish($export);
+            
+            $this->get('session')->getFlashBag()->add(
+                    'success',
+                    'Pliki zostały załadowane na serwer FTP prawidłowo'
+            );
+                
+            return $this->redirect($this->generateUrl('export', array('id' => $export->getId())));
         }
         
     }

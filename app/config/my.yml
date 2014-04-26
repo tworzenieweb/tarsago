@@ -15,9 +15,10 @@ knp_gaufrette:
                 host: fex.tarsago.com
                 username: busiperf
                 password: iCwXJvtjb7
-                directory: /testy/finaltest/
+                directory: /
                 create: true
                 mode: FTP_BINARY
+                passive: true
                 
     filesystems:
         tarsago:
