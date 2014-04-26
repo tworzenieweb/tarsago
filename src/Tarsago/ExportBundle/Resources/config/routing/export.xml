@@ -13,6 +13,9 @@
     </route>
 
 
+    <route id="export_publish" pattern="/publish/{id}">
+        <default key="_controller">TarsagoExportBundle:Export:publish</default>
+    </route>
 
 
 </routes>

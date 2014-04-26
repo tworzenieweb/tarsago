@@ -8,7 +8,7 @@ use Doctrine\ORM\EntityManager;
 use Tarsago\ExportBundle\Model\OutputFactory;
 use Tarsago\ExportBundle\Entity\IM;
 use Symfony\Component\Validator\Validator;
-use Alchemy\Zippy\Zippy;
+use Gaufrette\Filesystem;
 
 class ExportManager
 {
@@ -26,15 +26,26 @@ class ExportManager
     
     /**
      *
-     * @var Symfony\Component\Validator\Validator
+     * @var \Symfony\Component\Validator\Validator
      */
     private $validator;
+    
+    /**
+     *
+     * @var \Gaufrette\Filesystem;
+     */
+    private $filesystem;
     
     public function __construct(EntityManager $em, OutputFactory $outputFactory, Validator $validator)
     {
         $this->em = $em;
         $this->outputFactory = $outputFactory;
         $this->validator = $validator;
+    }
+    
+    public function setFilesystem(Filesystem $filesystem)
+    {
+        $this->filesystem = $filesystem;
     }
     
     public function process(Export $export)
@@ -424,6 +435,50 @@ class ExportManager
         fclose($fp);
         
         return $filename;
+    }
+    
+    protected function getFilesArray($export)
+    {
+        
+        $filesArray = array();
+        
+        $IMFilename = $export->getFilename();
+        $RIFilename = str_replace(array('IM', 'TXT'), array('RI', 'CSV'), $IMFilename);
+        $FPFilename = str_replace(array('IM'), array('FP'), $IMFilename);
+        $CHFilename = str_replace(array('IM'), array('CH'), $IMFilename);
+        
+        $filesArray[$IMFilename] = $this->getIMFile($export);
+        $filesArray[$RIFilename] = $this->getRIFile($export);
+        
+        if($export->getChangeAddress())
+        {
+            $filesArray[$CHFilename] = $this->getCHFile($export);
+        }
+        
+        $filesArray[$FPFilename] = '/tmp/' . $FPFilename;
+        
+        $list = '';
+        
+        foreach($filesArray as $path)
+        {
+            $list .= $path . ' ';
+        }
+        
+        $output = `stat -c "%y %s %n" {$list} | awk '{ printf "%s  %s %19s %s\\n", $1, substr($2,0,9), $4, $5 }'`;
+        
+        file_put_contents($filesArray[$FPFilename], str_replace(array('/tmp/', "\n"), array('', "\r\n"), iconv('UTF-8', 'CP1250', $output)));
+        
+        return $filesArray;
+    }
+    
+    public function publish(Export $export)
+    {
+        $files = $this->getFilesArray($export);
+        
+        foreach($files as $filename => $filepath)
+        {
+            $this->filesystem->write($filename, file_get_contents($filepath), true);
+        }
     }
     
 }

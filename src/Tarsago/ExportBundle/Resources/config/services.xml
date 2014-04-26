@@ -19,6 +19,9 @@
             <argument type="service" id="doctrine.orm.entity_manager" />
             <argument type="service" id="tarsago_export.output_factory" />
             <argument type="service" id="validator" />
+            <call method="setFilesystem">
+                <argument type="service" id="tarsago_filesystem" />
+            </call>
         </service>
         <service id="tarsago_export.helper" class="%tarsago_export.helper.class%">
             <argument type="service" id="templating" />

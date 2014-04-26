@@ -1,4 +1,3 @@
 tarsago_export:
     resource: "@TarsagoExportBundle/Resources/config/routing.xml"
     prefix:   /
-

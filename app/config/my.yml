@@ -6,3 +6,20 @@ twig:
     form:
         resources:
             - TarsagoExportBundle:Form:form_div_layout.html.twig
+            
+            
+knp_gaufrette:
+    adapters:
+        tarsago:
+            ftp:
+                host: fex.tarsago.com
+                username: busiperf
+                password: iCwXJvtjb7
+                directory: /testy/finaltest/
+                create: true
+                mode: FTP_BINARY
+                
+    filesystems:
+        tarsago:
+            adapter:    tarsago
+            alias:      tarsago_filesystem

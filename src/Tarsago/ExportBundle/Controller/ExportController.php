@@ -47,4 +47,20 @@ class ExportController extends Controller
             'entity'      => $entity,
         ));
     }
+    
+    public function publishAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $export = $em->find('TarsagoExportBundle:Export', $id);
+        
+        if (!$export) {
+            throw $this->createNotFoundException('Unable to find Export entity.');
+        }
+        
+        if($export)
+        {
+            $this->get('tarsago_export.exporter')->publish($export);
+        }
+        
+    }
 }

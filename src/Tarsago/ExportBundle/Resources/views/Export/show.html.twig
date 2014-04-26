@@ -33,6 +33,9 @@
         <a href="{{ path('tarsago_export_export', {id: entity.id}) }}" class="btn btn-sm btn-default">
             Pobierz plik eksportu
         </a>
+        <a href="{{ path('export_publish', {id: entity.id}) }}" class="btn btn-sm btn-success">
+            Publikuj na serwerze FTP
+        </a>
     </li>
 </ul>
 {% endblock %}

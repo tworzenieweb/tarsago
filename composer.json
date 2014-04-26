@@ -22,7 +22,8 @@
         "keboola/csv": "1.1.*",
         "rhumsaa/array_column": "~1.1",
         "braincrafted/bootstrap-bundle": "~2.0",
-        "alchemy/zippy": "dev-master"
+        "alchemy/zippy": "dev-master",
+        "knplabs/knp-gaufrette-bundle": "*"
     },
     "scripts": {
         "post-install-cmd": [
@@ -43,7 +44,7 @@
     "config": {
         "bin-dir": "bin"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "alpha",
     "extra": {
         "symfony-app-dir": "app",
         "symfony-web-dir": "web",

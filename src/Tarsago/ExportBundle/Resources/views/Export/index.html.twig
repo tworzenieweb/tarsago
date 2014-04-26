@@ -25,6 +25,9 @@
                     <li>
                         <a href="{{ path('export_show', { 'id': entity.id }) }}" class="btn btn-default btn-sm">Pokaż szczegóły</a>
                         <a href="{{ path('tarsago_export_export', { 'id': entity.id }) }}" class="btn btn-default btn-sm">Pobierz</a>
+                        <a href="{{ path('export_publish', {id: entity.id}) }}" class="btn btn-success btn-sm">
+                            Publikuj na serwerze FTP
+                        </a>
                     </li>
                 </ul>
                 </td>
