@@ -323,7 +323,7 @@ class ExportManager
                 $rowCSV[] = iconv('UTF-8', 'CP1250', $this->outputFactory->getValue($fieldName, $row[0]));
             }
             
-            $rowCSV[] = $row['CNTRP'];
+            $rowCSV[] = (string) str_pad($row['CNTRP'], 3, 0, STR_PAD_LEFT);
             
             $csv->writeRow($rowCSV);
         }
